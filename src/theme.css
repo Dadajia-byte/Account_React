@@ -1,0 +1,10 @@
+/* 全局定制主题颜色 */
+:root:root {
+    --adm-color-primary:rgb(105,174,120)
+} 
+
+/* 局部定制主题颜色 */
+/* .puple {
+    
+    --adm-color-primary: #a062d4;
+} */
