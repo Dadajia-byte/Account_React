@@ -19,10 +19,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "craco start & json-server ./server/data.json --port 8888",
+    "start": "craco start",
     "build": "craco build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "json-server ./server/data.json --port 8888"
   },
   "eslintConfig": {
     "extends": [

@@ -11,7 +11,7 @@ export default createBrowserRouter([
         element: <Layout></Layout>,
         children: [
             {
-                path: 'month',
+                index: true,
                 element: <Month></Month>
             },
             {
