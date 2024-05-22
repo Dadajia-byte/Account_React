@@ -93,7 +93,6 @@
         }
     }
 
-    .container {}
 
     .kaTypeList {
         height: 490px;
@@ -129,9 +128,9 @@
 
                 .item {
                     width: 65px;
-                    height: 65px;
-                    padding: 9px 0;
-                    margin-right: 7px;
+                    height: 60px;
+                    padding-top: 9px;
+                    margin:9px 7px;
                     text-align: center;
                     border: 0.5px solid #fff;
 

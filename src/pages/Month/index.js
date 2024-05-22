@@ -22,7 +22,7 @@ const Month = () => {
     useEffect(() => {
         const nowDate = dayjs().format('YYYY | M')
         if (monthGroup[nowDate]) {
-            setCurrentDate(monthGroup[nowDate])
+            setCurrentMonthList(monthGroup[nowDate])
         }
     }, [monthGroup])
 
@@ -51,6 +51,7 @@ const Month = () => {
     // 控制时间显示
     const [currentDate, setCurrentDate] = useState(() => dayjs(new Date()).format('YYYY | M'))
 
+
     // 按日分组
     const dayGroup = useMemo(() => {
         const groupData = _.groupBy(currentMonthList, (item) => dayjs(item.date).format('YYYY-MM-DD'))
@@ -71,7 +72,7 @@ const Month = () => {
                     {/* 时间切换区域 */}
                     <div className="date" onClick={() => setDateVisible(true)}>
                         <span className="text">
-                            {currentDate + '月'}账单
+                            {currentDate + '月 账单'}
                         </span>
                         <span className={classNames('arrow', dateVisible && 'expand')}></span>
                     </div>

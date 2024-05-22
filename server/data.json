@@ -83,6 +83,55 @@
       "date": "2023-04-03T11:14:56.036Z",
       "useFor": "food",
       "id": 19
+    },
+    {
+      "type": "pay",
+      "money": 0,
+      "date": "2024-05-01T17:52:42.434Z",
+      "useFor": "",
+      "id": 20
+    },
+    {
+      "type": "pay",
+      "money": -100,
+      "date": "2024-05-01T17:52:56.238Z",
+      "useFor": "drinks",
+      "id": 21
+    },
+    {
+      "type": "income",
+      "money": 1500,
+      "date": "2024-04-30T16:00:00.000Z",
+      "useFor": "salary",
+      "id": 22
+    },
+    {
+      "type": "income",
+      "money": 1000,
+      "date": "2024-04-02T16:00:00.000Z",
+      "useFor": "salary",
+      "id": 23
+    },
+    {
+      "type": "pay",
+      "money": -10,
+      "date": "2024-05-01T18:15:55.740Z",
+      "useFor": "food",
+      "id": 24
+    },
+    {
+      "type": "pay",
+      "money": -10,
+      "date": "2024-05-01T18:15:55.740Z",
+      "useFor": "food",
+      "id": 25
+    },
+    {
+      "type": "pay",
+      "money": -500,
+      "date": "2024-04-30T16:00:00.000Z",
+      "useFor": "longdistance",
+      "id": 26
     }
   ]
 }

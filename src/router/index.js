@@ -3,9 +3,13 @@ import Layout from "../pages/Layout";
 import Month from "../pages/Month";
 import Year from "../pages/Year";
 import New from "../pages/New";
-
+import Login from "../pages/Login";
 
 export default createBrowserRouter([
+    {
+        path: '/login',
+        element: <Login></Login>
+    },
     {
         path: '/',
         element: <Layout></Layout>,

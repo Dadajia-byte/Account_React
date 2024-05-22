@@ -1,12 +1,52 @@
-import { Button, DatePicker, Input, NavBar } from 'antd-mobile'
+import { Button, DatePicker, Input, NavBar, Toast } from 'antd-mobile'
 import Icon from '@/components/Icon'
 import './index.scss'
 import classNames from 'classnames'
 import { billListData } from '@/constants'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { addBillList } from '@/store/modules/billStore'
+import { useDispatch } from 'react-redux'
+import dayjs from 'dayjs'
 
 const New = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    // 控制支出收入状态
+    const [type, setType] = useState('pay')
+    const [money, setMoney] = useState(0)
+    const moneyChange = (value) => {
+        setMoney(value)
+    }
+    // 收集账单类型
+    const [useFor, setUseFor] = useState('')
+
+
+
+    // 控制时间显示
+    const [dateVisible, setDateVisible] = useState(false)
+    const [date, setDate] = useState(new Date())
+    const dateConfirm = (date) => {
+        setDate(date)
+        setDateVisible(false)
+    }
+
+    const saveBill = () => {
+        // 收集表单数据
+        const data = {
+            type: type,
+            money: type === 'pay' ? -money : +money,
+            date: date,
+            useFor: useFor
+        }
+        dispatch(addBillList(data))
+        // 这里应该要成功后再判断
+        Toast.show({
+            icon: 'success',
+            content: '记账成功',
+            duration: 1000
+        })
+    }
     return (
         <div className="keepAccounts">
             <NavBar className="nav" onBack={() => navigate(-1)}>
@@ -17,13 +57,15 @@ const New = () => {
                 <div className="kaType">
                     <Button
                         shape="rounded"
-                        className={classNames('selected')}
+                        className={classNames(type === "pay" ? 'selected' : '')}
+                        onClick={() => setType('pay')}
                     >
                         支出
                     </Button>
                     <Button
-                        className={classNames('')}
+                        className={classNames(type === "income" ? 'selected' : '')}
                         shape="rounded"
+                        onClick={() => setType('income')}
                     >
                         收入
                     </Button>
@@ -31,13 +73,19 @@ const New = () => {
 
                 <div className="kaFormWrapper">
                     <div className="kaForm">
-                        <div className="date">
+                        <div className="date" >
                             <Icon type="calendar" className="icon" />
-                            <span className="text">{'今天'}</span>
+                            <span className="text" onClick={() => setDateVisible(true)}>
+                                {dayjs(date).format('YYYY-MM-DD')}
+                            </span>
                             <DatePicker
                                 className="kaDate"
                                 title="记账日期"
                                 max={new Date()}
+                                visible={dateVisible}
+                                onCancel={() => setDateVisible(false)}
+                                onClose={() => setDateVisible(false)}
+                                onConfirm={dateConfirm}
                             />
                         </div>
                         <div className="kaInput">
@@ -45,6 +93,8 @@ const New = () => {
                                 className="input"
                                 placeholder="0.00"
                                 type="number"
+                                value={money}
+                                onChange={moneyChange}
                             />
                             <span className="iconYuan">¥</span>
                         </div>
@@ -53,7 +103,7 @@ const New = () => {
             </div>
 
             <div className="kaTypeList">
-                {billListData['pay'].map(item => {
+                {billListData[type].map(item => {
                     return (
                         <div className="kaType" key={item.type}>
                             <div className="title">{item.name}</div>
@@ -63,9 +113,10 @@ const New = () => {
                                         <div
                                             className={classNames(
                                                 'item',
-                                                ''
+                                                useFor === item.type ? 'selected' : ''
                                             )}
                                             key={item.type}
+                                            onClick={() => setUseFor(item.type)}
 
                                         >
                                             <div className="icon">
@@ -82,8 +133,8 @@ const New = () => {
             </div>
 
             <div className="btns">
-                <Button className="btn save">
-                    保 存
+                <Button className="btn save" onClick={saveBill}>
+                    记 账
                 </Button>
             </div>
         </div>

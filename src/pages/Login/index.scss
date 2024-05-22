@@ -1,0 +1,78 @@
+body {
+    background-color: white;
+}
+
+.login {
+    padding: 4vw;
+    margin-top: 10vw;
+    .pwd {
+        display: flex;
+        .eye {
+            margin-left: 2vw;
+            padding: 1vw;
+            cursor: pointer;
+        
+                svg {
+                    display: block;
+                    font-size: 5vw;
+                }
+            }
+    }
+    
+    .summitButton {
+        margin-top: 10vw
+    }
+}
+
+.footer {
+    margin-top: 16vw;
+    text-align: center;
+    .other {
+        padding-left: 4vw;
+        padding-right: 4vw;
+        position: relative;
+        color: gray;
+        &::after {
+            display: block;
+            content: '';
+            width: 100%;
+            height: 0.2vw;
+            background-color: gray;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -100%;
+        }
+        &::before {
+            display: block;
+            content: '';
+            width: 100%;
+            height: 0.2vw;
+            background-color: gray;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -100%;
+        }
+    }
+    .login-type {
+        width: 40vw;
+        margin: 0 auto;
+        display: flex;
+        margin-top: 8vw;
+        justify-content: center;
+        margin-bottom: 6vw;
+        img {
+            width: 8vw;
+            height: 8vw;
+            border-radius: 3vw;
+            margin: 2vw;
+        }
+        .footer-text {
+            color: gray;
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
