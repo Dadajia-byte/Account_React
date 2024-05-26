@@ -4,6 +4,7 @@ import Month from "../pages/Month";
 import Year from "../pages/Year";
 import New from "../pages/New";
 import Login from "../pages/Login";
+import Setting from "../pages/Setting";
 
 export default createBrowserRouter([
     {
@@ -21,12 +22,18 @@ export default createBrowserRouter([
             {
                 path: 'year',
                 element: <Year></Year>
-            }
+            },
+
         ]
     },
     {
         path: '/new',
         element: <New></New>
     },
+    {
+        path: '/setting',
+        element: <Setting></Setting>
+    }
+
 
 ])

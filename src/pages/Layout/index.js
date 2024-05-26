@@ -3,7 +3,8 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import {
     BillOutline,
     CalculatorOutline,
-    AddCircleOutline
+    AddCircleOutline,
+    SetOutline
 } from 'antd-mobile-icons'
 import './index.scss'
 import { useEffect } from 'react'
@@ -21,11 +22,16 @@ const tabs = [
         title: '记账',
         icon: <AddCircleOutline />,
     },
-    {
+    /* {
         key: '/year',
         title: '年度账单',
         icon: <CalculatorOutline />,
-    },
+    }, */
+    {
+        key: '/setting',
+        title: '设置',
+        icon: <SetOutline />
+    }
 ]
 
 const Layout = () => {

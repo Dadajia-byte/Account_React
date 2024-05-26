@@ -32,7 +32,6 @@ const getBillList = () => {
 const addBillList = (data) => {
     return async (dispatch) => {
         const res = await addBillListAPI(data)
-        console.log(res);
         dispatch(addBill(res))
     }
 }
