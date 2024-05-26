@@ -16,7 +16,7 @@ const Month = () => {
         return _.groupBy(billList, (item) => dayjs(item.date).format('YYYY | M'))
     }, [billList])
 
-    const [currentMonthList, setCurrentMonthList] = useState([])
+    const [currentMonthList, setCurrentMonthList] = useState([]);
 
     // 初始化
     useEffect(() => {
@@ -28,6 +28,9 @@ const Month = () => {
 
 
     const monthResult = useMemo(() => {
+        if (!currentMonthList) {
+            return { pay: 0, income: 0, total: 0 }; // 提供默认值以防止错误
+        }
         // 支出  /  收入  / 结余
         const pay = currentMonthList.filter(item => item.type === 'pay').reduce((a, c) => a + c.money, 0)
         const income = currentMonthList.filter(item => item.type === 'income').reduce((a, c) => a + c.money, 0)
