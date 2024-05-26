@@ -157,12 +157,15 @@
 
     .btns {
         position: fixed;
-        bottom: 15px;
+        bottom: 0px;
         width: 100%;
+        background-color: #ffffff;
         text-align: center;
 
         .btn {
             width: 200px;
+            margin-bottom: 15px;
+            margin-top: 15px;
             --border-width: 0;
             --background-color: #fafafa;
             --text-color: #616161;

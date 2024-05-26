@@ -39,6 +39,23 @@ const New = () => {
             date: date,
             useFor: useFor
         }
+        if (useFor === '') {
+            Toast.show({
+                icon: 'fail',
+                content: '请选择账单类型',
+                duration: 1000
+            })
+            return
+        }
+        if (money == 0) {
+            Toast.show({
+                icon: 'fail',
+                content: '请输入金额',
+                duration: 1000
+            })
+            return
+        }
+
         dispatch(addBillList(data))
         // 这里应该要成功后再判断
         Toast.show({

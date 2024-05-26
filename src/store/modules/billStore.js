@@ -1,6 +1,7 @@
 // 账单列表相关store
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { getBillListAPI, addBillListAPI } from "@/apis/bill";
+
 const billStore = createSlice({
     name: 'bill',
     initialState: {
@@ -24,14 +25,15 @@ export default reducer
 // 异步操作
 const getBillList = () => {
     return async (dispatch) => {
-        const res = await axios.get('http://localhost:8888/ka')
+        const res = await getBillListAPI()
         dispatch(setBillList(res.data))
     }
 }
 const addBillList = (data) => {
     return async (dispatch) => {
-        const res = await axios.post('http://localhost:8888/ka', data)
-        dispatch(addBill(res.data))
+        const res = await addBillListAPI(data)
+        console.log(res);
+        dispatch(addBill(res))
     }
 }
 

@@ -2,9 +2,13 @@ body {
     background-color: white;
 }
 
-.login {
+.login,
+.register {
     padding: 4vw;
     margin-top: 10vw;
+    .navbar {
+        margin-bottom: 4vw;
+    }
     .pwd {
         display: flex;
         .eye {
@@ -19,10 +23,33 @@ body {
             }
     }
     
+    .authMode {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        margin-top: 3vw;
+        scale: 0.9;
+        color: #666666;
+        .changeMode {
+            margin-left: 1vw;
+            color: #398ffe;
+            cursor: pointer;
+            scale: 1.1;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
     .summitButton {
-        margin-top: 10vw
+        
+        margin: 0 auto;
+        margin-top: 3vw;
+        width: 95%;
     }
 }
+
+
 
 .footer {
     margin-top: 16vw;

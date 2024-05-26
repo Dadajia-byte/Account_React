@@ -20,6 +20,7 @@ const DailyBill = (props) => {
     const changeVisible = () => {
         setVisible(!visible)
     }
+
     return (
         <div className={classNames('dailyBill')}>
             <div className="header">
@@ -50,7 +51,7 @@ const DailyBill = (props) => {
                 <div className="billList" >
                     {billList.map(item => {
                         return (
-                            <div className="bill" key={item.id}>
+                            <div className="bill" key={item._id}>
                                 {/* 图标 */}
                                 <Icon type={item.useFor}></Icon>
                                 <div className="detail">
