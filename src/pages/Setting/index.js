@@ -1,14 +1,14 @@
 
 import React, { useEffect } from 'react'
 import './index.scss'
-import { Avatar, List, NavBar, Switch } from 'antd-mobile'
+import { Avatar, List, NavBar, Switch, Modal, Toast } from 'antd-mobile'
 import {
     UnorderedListOutline,
     PayCircleOutline,
 } from 'antd-mobile-icons'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchUserInfo } from '@/store/modules/user'
+import { fetchUserInfo, clearUserInfo } from '@/store/modules/user'
 const Setting = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -57,7 +57,19 @@ const Setting = () => {
                     大字号模式
                 </List.Item>
                 <List.Item onClick={handleClick}>帮助中心</List.Item>
-                <List.Item>
+                <List.Item onClick={() =>
+                    Modal.confirm({
+                        content: '确定退出登录？',
+                        onConfirm: () => {
+                            navigate('/login')
+                            dispatch(clearUserInfo())
+                            Toast.show({
+                                icon: 'success',
+                                content: '退出成功',
+                            })
+                        },
+                    })
+                }>
                     退出登录
                 </List.Item>
             </List>

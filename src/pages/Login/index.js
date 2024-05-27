@@ -45,6 +45,50 @@ const Login = () => {
         }
     }
 
+    /* 校验 */
+    const usernameValidator = (_, value) => {
+        if (!value) {
+            return Promise.reject(new Error('请输入账号'));
+        }
+        const lengthValid = value.length >= 6 && value.length <= 10;
+        const patternValid = /^[A-Za-z0-9]+$/.test(value);
+        if (!lengthValid) {
+            return Promise.reject(new Error('账号长度必须为6到10位'));
+        } else if (!patternValid) {
+            return Promise.reject(new Error('账号只能包含数字或字母'));
+        }
+        return Promise.resolve();
+
+    };
+
+    const passwordValidator = (_, value) => {
+        if (!value) {
+            return Promise.reject(new Error('请输入密码'));
+        }
+        const lengthValid = value.length > 7 && value.length < 15;
+        const patternValid = /^(?=.*[A-Za-z])(?=.*\d)|(?=.*[A-Za-z])(?=.*[!@#$%^&*])|(?=.*\d)(?=.*[!@#$%^&*])/.test(value);
+        if (!lengthValid) {
+            return Promise.reject(new Error('密码长度必须为8到14位'));
+        } else if (!patternValid) {
+            return Promise.reject(new Error('密码必须包含字母、数字或特殊符号其中两种'));
+        }
+        return Promise.resolve();
+    };
+
+    // 确认密码校验规则
+    const confirmPasswordValidator = ({ getFieldValue }) => ({
+        validator(_, value) {
+            if (!value) {
+                return Promise.reject('请再次输入密码');
+            }
+            if (value !== getFieldValue('registerPwd')) {
+                return Promise.reject('两次输入的密码不一致');
+            }
+            return Promise.resolve();
+        }
+    });
+
+
     const register = async () => {
         try {
             const res = await registerAPI({
@@ -99,15 +143,15 @@ const Login = () => {
                 </NavBar>
                 {/* 表单区 */}
                 <Form layout='horizontal' form={registerForm}>
-                    <Form.Item label='账号' name='registerAccount'>
+                    <Form.Item label='账号' name='registerAccount' rules={[{ validator: usernameValidator }]}>
                         <Input placeholder='请输入账号'></Input>
                     </Form.Item>
-                    <Form.Item label='密码' name='registerPwd'>
+                    <Form.Item label='密码' name='registerPwd' rules={[{ validator: passwordValidator }]}>
                         <div className='pwd'>
-                            <Input placeholder='请输入密码' type={visible ? 'text' : 'password'} />
+                            <Input placeholder='请输入密码' validateTrigger="onChange" type={visible ? 'text' : 'password'} />
                         </div>
                     </Form.Item>
-                    <Form.Item label='确认密码' name='registerCheckPwd'>
+                    <Form.Item label='确认密码' name='registerCheckPwd' dependencies={['registerPwd']} rules={[confirmPasswordValidator]}>
                         <div className='pwd'>
                             <Input placeholder='请再次输入密码' type={visible ? 'text' : 'password'} />
                         </div>
