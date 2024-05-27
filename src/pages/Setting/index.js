@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import './index.scss'
 import { Avatar, List, NavBar, Switch } from 'antd-mobile'
 import {
@@ -7,8 +7,15 @@ import {
     PayCircleOutline,
 } from 'antd-mobile-icons'
 import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUserInfo } from '@/store/modules/user'
 const Setting = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchUserInfo())
+    }, [dispatch])
+    const userInfo = useSelector(state => state.user.userInfo)
     function handleClick() {
         // ...
     }
@@ -17,10 +24,10 @@ const Setting = () => {
             <NavBar onBack={() => navigate(-1)}>设置</NavBar>
             <List>
                 <List.Item
-                    prefix={<Avatar src={'https://images.unsplash.com/photo-1548532928-b34e3be62fc6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'} />}
-                    description='Deserunt dolor ea eaque eos'
+                    prefix={<Avatar src={userInfo.avatar || 'https://images.unsplash.com/photo-1548532928-b34e3be62fc6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'} />}
+                    description={userInfo.brief}
                 >
-                    Novalee Spicer
+                    {userInfo.name}
                 </List.Item>
             </List>
 

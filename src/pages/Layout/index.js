@@ -10,7 +10,7 @@ import './index.scss'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getBillList } from '@/store/modules/billStore'
-
+import { fetchUserInfo } from '@/store/modules/user'
 const tabs = [
     {
         key: '/',
@@ -37,8 +37,11 @@ const tabs = [
 const Layout = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+
     useEffect(() => {
         dispatch(getBillList())
+        dispatch(fetchUserInfo())
     }, [dispatch])
 
     const switchRoute = (path) => {

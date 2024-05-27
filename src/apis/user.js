@@ -17,3 +17,9 @@ export function loginAPI(formData) {
 }
 
 
+export function userInfoAPI() {
+    return request({
+        url: '/user/userInfo',
+        method: 'GET'
+    })
+}
