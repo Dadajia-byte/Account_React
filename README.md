@@ -1,4 +1,7 @@
 ## 基于react hooks的记账本
+### 前端
+**技术栈：**
+react hooks + antd mobile + redux
 ### 后端
 使用express+mongodb搭建的简单服务，[地址](https://github.com/Dadajia-byte/Account_express)
 ### 目前效果图
