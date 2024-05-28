@@ -5,6 +5,7 @@ import Year from "../pages/Year";
 import New from "../pages/New";
 import Login from "../pages/Login";
 import Setting from "../pages/Setting";
+import Test from '../pages/test'
 
 export default createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export default createBrowserRouter([
     {
         path: '/setting',
         element: <Setting></Setting>
+    },
+    {
+        path: '/test',
+        element: <Test></Test>
     }
 
 
