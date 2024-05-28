@@ -2,10 +2,11 @@
 
 import { request } from "./request";
 import { setToken, getToken, removeToken } from "./token";
-
+import { processData } from "./processData";
 export {
     request,
     setToken,
     getToken,
-    removeToken
+    removeToken,
+    processData
 }

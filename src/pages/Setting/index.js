@@ -32,8 +32,8 @@ const Setting = () => {
             </List>
 
             <List mode='card' header='账单细节'>
-                <List.Item prefix={<UnorderedListOutline />} onClick={() => { }}>
-                    账单
+                <List.Item prefix={<UnorderedListOutline />} onClick={() => { navigate('/billChart') }}>
+                    账单图表
                 </List.Item>
                 <List.Item prefix={<PayCircleOutline />} onClick={() => { }}>
                     收支分析

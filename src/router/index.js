@@ -5,7 +5,7 @@ import Year from "../pages/Year";
 import New from "../pages/New";
 import Login from "../pages/Login";
 import Setting from "../pages/Setting";
-import Test from '../pages/test'
+import BillChart from '../pages/billChart'
 
 export default createBrowserRouter([
     {
@@ -36,8 +36,8 @@ export default createBrowserRouter([
         element: <Setting></Setting>
     },
     {
-        path: '/test',
-        element: <Test></Test>
+        path: '/billChart',
+        element: <BillChart></BillChart>
     }
 
 
