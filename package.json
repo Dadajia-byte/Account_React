@@ -47,6 +47,7 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "json-server": "^0.17.2",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "worker-loader": "^3.0.8"
   }
 }

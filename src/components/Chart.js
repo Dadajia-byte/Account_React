@@ -1,5 +1,6 @@
 import { memo, useEffect, useRef } from "react";
 import * as echarts from 'echarts'
+
 const Chart = memo(({ options, style }) => {
     const chartRef = useRef(null);
     const chartInstanceRef = useRef(null);
