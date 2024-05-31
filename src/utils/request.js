@@ -7,7 +7,8 @@ import router from "@/router";
 // 2. 超时时间
 // 3. 请求拦截器 / 响应拦截器
 const request = axios.create({
-    baseURL: 'http://localhost:3000',
+    // baseURL: 'http://localhost:3000',
+    baseURL: 'http://123.249.76.67:3000',
     timeout: 5000
 })
 
